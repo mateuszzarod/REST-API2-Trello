@@ -10,7 +10,5 @@ public class Tasks2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Tasks2Application.class, args);
 
-
-
 	}
 }
