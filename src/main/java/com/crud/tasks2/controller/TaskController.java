@@ -15,8 +15,9 @@ import java.util.List;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
+@CrossOrigin(origins = "*") //Spring adnotation permission for Cross Origin Resource Sharing
 @RestController
-@RequestMapping("v2/task")
+@RequestMapping("v1/task") //generates adress for API
 public class TaskController {
 
     @Autowired
