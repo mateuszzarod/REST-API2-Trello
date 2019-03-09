@@ -15,8 +15,9 @@ import java.util.List;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
-
-@CrossOrigin(origins = "*") //Spring adnotation permission for Cross Origin Resource Sharing
+//Spring adnotation permission for Cross Origin Resource Sharing
+//Everything works in postman
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("v1/task") //generates adress for API
 public class TaskController {
@@ -54,6 +55,7 @@ public class TaskController {
             method = RequestMethod.PUT,
             value = "updateTask"
     )
+    //repo
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
         return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
