@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
+
 @CrossOrigin(origins = "*") //Spring adnotation permission for Cross Origin Resource Sharing
 @RestController
 @RequestMapping("v1/task") //generates adress for API
@@ -29,7 +30,7 @@ public class TaskController {
             method = RequestMethod.GET,
             value = "getTasks"
     )
-    public List<TaskDto> getTasks(){
+    public List<TaskDto> getTasks() {
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
 
@@ -37,16 +38,15 @@ public class TaskController {
             method = RequestMethod.GET,
             value = "getTask"
     )
-    public TaskDto getTask(@RequestParam Long taskId) throws TaskNotFoundException{
+    public TaskDto getTask(@RequestParam Long taskId) throws TaskNotFoundException {
         return taskMapper.mapToTaskDto(service.getTask(taskId).orElseThrow(TaskNotFoundException::new));
     }
-
 
     @RequestMapping(
             method = RequestMethod.DELETE,
             value = "deleteTask"
     )
-    public void deleteTask(@RequestParam Long taskId) throws TaskNotFoundException{
+    public void deleteTask(@RequestParam Long taskId) throws TaskNotFoundException {
         service.deleteTask(taskId);
     }
 
@@ -54,7 +54,7 @@ public class TaskController {
             method = RequestMethod.PUT,
             value = "updateTask"
     )
-    public TaskDto updateTask(@RequestBody TaskDto taskDto){
+    public TaskDto updateTask(@RequestBody TaskDto taskDto) {
         return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
 
@@ -62,7 +62,7 @@ public class TaskController {
             method = RequestMethod.POST,
             value = "createTask",
             consumes = APPLICATION_JSON_VALUE)
-    public void createTask(@RequestBody TaskDto taskDto){
+    public void createTask(@RequestBody TaskDto taskDto) {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
 }
